@@ -1,11 +1,12 @@
 from datetime import datetime
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, EmailStr
 
 
 class FileResponse(BaseModel):
     job_id: str
     filename: str
+    email: EmailStr
     status: str
     original_s3_key: str | None = None
     processed_s3_key: str | None = None
@@ -13,6 +14,4 @@ class FileResponse(BaseModel):
     created_at: datetime
     updated_at: datetime
 
-    model_config = ConfigDict(
-        from_attributes=True
-    )
+    model_config = ConfigDict(from_attributes=True)
